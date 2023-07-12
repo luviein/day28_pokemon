@@ -6,58 +6,135 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        *{
-            margin-left:auto;
-            margin-right: auto;
+        * {
+            margin-left: 3%;
+            margin-right: 3%;
             text-align: center;
+            
         }
+
+        
+        body{
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            background-image: url(../image/301412-Pokemon.jpg);
+            background-color: rgb(255, 255, 255, 0.1);
+            background-size: cover;
+            
+        }
+
         h1 span {
             text-align: center;
         }
 
-        td{
+        td {
             padding: 1.5rem;
         }
 
         table {
             margin-top: 5rem;
         }
-        .pokelist{
+
+        .pokelist {
             display: flex;
-        }
-        .pokelist + td {
-            flex: 50%;
+            justify-content: center;
+            flex-flow: row wrap;
         }
 
 
+        .list{
+            flex-basis: 25%;
+            padding: 1.3rem;
+            margin: 2rem;
+            box-sizing:border-box;
+            border: 3px solid rgb(182, 182, 250);
+            border-radius: 10%;
+
+        }
+        .list:hover {
+            background-color: rgb(200, 240, 255);
+            box-shadow: 5px 0px 15px rgb(142, 165, 157);
+            transform: scale(1.05);
+            transition: 0.2s;
+            
+        }
+
+        section {
+            display: flex;
+            align-items: center;
+            
+        }
+
+        /* .container:hover .overlay {
+            opacity: 1;
+            }
+
+        .overlay {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 1;
+        width: 1;
+        opacity: 0;
+        transition: .5s ease;
+        background-color: #008CBA;
+        }
+
+
+        .text {
+        color: white;
+        font-size: 20px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        text-align: center;
+        } */
 
     </style>
 </head>
 
 <body data-th-object="${list}">
-    <h1><span data-th-text="${type}"></span> Type Pokemon</h1>
+    <h1><span data-th-text="${type}"></span>Type Pokemon</h1>
+    <section>
+        <!-- <table> -->
 
-    <table >
-        <tbody >
-            <tr>
-                <th>Pokemon</th>
-                <th>PokeImage</th>
-            </tr>
+            <!-- <tr>
+                    <th>Pokemon</th>
+                    <th>PokeImage</th>
+                </tr> -->
+        <div class="container">
             <div class="pokelist">
-                <tr th:each="poke : ${list}" >
-                    <td><span th:text="${poke.pokemonName}"></span></td>
-                    <td><img data-th-src="@{${poke.img}}" style="height: 200px; width:200px;"></td>
-                </tr>
+                <div class="list" th:each="poke : ${list}">
+                    <span th:text="${poke.pokemonName}"></span>
+                    <img data-th-src="@{${poke.img}}" style="height: auto; width:90%; ">
+                    <!-- <div class="overlay">
+                        <div class="text">
+                            Test
+                        </div>
+                    </div> -->
+                </div> 
             </div>
+        </div>
             
-
-        </tbody>
-
-    </table>
-
-    <form action="/types">
-        <input type="submit" value="Go Back">
-    </form>
+    
+    
+    
+<!--     
+        </table> -->
+    
+        
+    </section>
+    <footer>
+        <form action="/types">
+            <input type="submit" value="Go Back">
+        </form>
+    </footer>
+    
+    
 
 
 </body>
