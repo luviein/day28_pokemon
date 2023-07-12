@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon Types</title>
+    <style>
+        a {
+            text-decoration: none;
+            font-size: 1.3rem;
+        }
+        *{
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            padding-top: 1.3rem;
+            margin-bottom: 1.5rem;
+            
+        }
+    </style>
+</head>
+<body>
+    <h1>Pokemon List</h1>
+    <table>
+        <tr th:each="types : ${poketype}">    
+            <td>
+                <a data-th-href="@{/types/{type}(type=${types})}" th:text="${types}"></a>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
